@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--bg-main);
+}
+
+:root{
+    --bg-main: #F5F5F5;
+    --bg-sec: #fff;
+    --bg-danger: #ff0b0b9f;
+    --txt-gray: #A9B6C6;
+    --primary: #1677FF;
+    --success: #00ff00;
+    --danger: #ff0000;
+    --saturated-success: #07633F;
+    --color-pink: #ee1feec4;
+    --color-blue: #014ebb;
+    --color-black: #000;
+}
+
+.mainFont{
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+.secondaryFont{
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+.borderr{
+    border: 1px solid green !important;
+}
+
+
+.ant-btn {
+    box-shadow: none !important;
+  }
+  
+  .my-btn:hover{
+    color: inherit !important;
+  }
