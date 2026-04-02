@@ -10,10 +10,11 @@ export interface ResUser{
   message:string,
   role:string,
   token:string,
-  username:User
+  username:string,
 }
 
 type UserLoginCreate = Omit<User, "confirm_password">;
+type ResSingleUser = Omit<ResUser, "token" | "message">;
 
 export const authApi = authBaseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,7 +26,14 @@ export const authApi = authBaseApi.injectEndpoints({
       }),
       invalidatesTags: ["Auth"], 
     }),
+    userLoginGet: builder.query<ResSingleUser, void>({
+      query: () => ({
+        url: "/get-user",
+        method: METHODS.GET,
+      }),
+      providesTags: ["Auth"], 
+    }),
   }),
 });
 
-export const { useUserLoginCreateMutation } = authApi;
+export const { useUserLoginCreateMutation, useUserLoginGetQuery } = authApi;

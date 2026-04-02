@@ -26,11 +26,13 @@ const AuthForm = () => {
         password
       }).unwrap();
 
-      msg("success", `Welcome to the ${res?.username} Admin panel`);
+      msg("success", `Welcome to the ${res?.role === 'admin' ? 'Admin' : 'User'} panel`);
+      console.log(res);
       
      if(res){
       setLocalStorage("auth", "true");
       setLocalStorage("user", JSON.stringify(res?.username));
+      setLocalStorage("token", JSON.stringify(res?.token));
       form.resetFields();
       navigate("/");  
      }

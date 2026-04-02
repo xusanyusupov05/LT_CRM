@@ -1,11 +1,12 @@
 import { SettingOutlined, UserOutlined } from "@ant-design/icons"
 import { Flex, Typography } from "antd"
-
+import { useUserLoginGetQuery } from "../../auth/api/request"
 interface BottomContentProps {
   collapsed?: boolean;
 }
-
 const BottomContent = ({ collapsed }: BottomContentProps) => {
+  const { data } = useUserLoginGetQuery();
+
   return (
     <>
       <Flex
@@ -17,15 +18,15 @@ const BottomContent = ({ collapsed }: BottomContentProps) => {
           {!collapsed && (
             <Flex vertical>
               <Typography.Text className="mainFont text-[var(--primary)] text-nowrap">
-                Xusan yusupov{" "}
+                {data?.username.toUpperCase()}
               </Typography.Text>
               <Typography.Text className="mainFont  text-[var(--success)] text-xs text-nowrap">
-                Admin Account
+                {data?.role === 'admin' ? 'Admin Account' : 'Viewer Account'}
               </Typography.Text>
             </Flex>
           )}
         </Flex>
-        {!collapsed && (
+        {!collapsed && data?.role === 'admin' && (
           <SettingOutlined className="text-xl text-[var(--primary)]" />
         )}
       </Flex>

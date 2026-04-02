@@ -1,4 +1,5 @@
 import { baseApi } from "./baseApi";
+import { USERS_ENDPOINTS } from "./endpoints";
 import { METHODS } from "./method";
 /* === MODEL === */
 export interface Users {
@@ -35,7 +36,7 @@ export const usersApi = baseApi.injectEndpoints({
         /* GET */
         getUsers: builder.query<Users[], void>({
             query: () => ({
-                url: "/rest/v1/users",
+                url: USERS_ENDPOINTS.GET_USERS,
             }),
             providesTags: ["users"],
         }),
