@@ -1,3 +1,4 @@
+import { AUTH_ENDPOINTS } from "../../../shared/api/endpoints";
 import { METHODS } from "../../../shared/api/method";
 import { authBaseApi } from "./baseApi";
 export interface User {
@@ -20,7 +21,7 @@ export const authApi = authBaseApi.injectEndpoints({
   endpoints: (builder) => ({
     userLoginCreate: builder.mutation<ResUser, UserLoginCreate>({
       query: (body) => ({
-        url: "/login",
+        url: AUTH_ENDPOINTS.LOGIN,
         method: METHODS.POST,
         body,
       }),
@@ -28,7 +29,7 @@ export const authApi = authBaseApi.injectEndpoints({
     }),
     userLoginGet: builder.query<ResSingleUser, void>({
       query: () => ({
-        url: "/get-user",
+        url: AUTH_ENDPOINTS.GET_USER,
         method: METHODS.GET,
       }),
       providesTags: ["Auth"], 

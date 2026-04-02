@@ -57,7 +57,7 @@ export const usersApi = baseApi.injectEndpoints({
         // //     /* DELETE */
         deleteUser: builder.mutation<void, number | number[]>({
             query: (id) => ({
-                url: `/rest/v1/users?id=${Array.isArray(id) ? `in.(${id.join(",")})` : `eq.${id}`}`,
+                url: `${USERS_ENDPOINTS.DELETE_USER}${Array.isArray(id) ? `in.(${id.join(",")})` : `eq.${id}`}`,
                 method: METHODS.DELETE,
             }),
             invalidatesTags: ["users"],
@@ -66,7 +66,7 @@ export const usersApi = baseApi.injectEndpoints({
         /* UPDATE ✅ */
         updateUser: builder.mutation<Users, { id: number; data: Partial<Omit<Users, "id">> }>({
             query: ({ id, data }) => ({
-                url: `/rest/v1/users?id=eq.${id}`,
+                url: `${USERS_ENDPOINTS.UPDATE_USER}${id}`,
                 method: METHODS.PUT,
                 body: data,
                 headers: {
