@@ -2,6 +2,7 @@ import { Button, Flex, Form, Input, Typography } from "antd";
 import { UserOutlined, LockOutlined, SafetyOutlined, GlobalOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { msg } from "../../shared/ui/msg";
+import { setLocalStorage } from "../../shared/lib/helpers/storage";
 import { useUserLoginCreateMutation } from "./api/request";
 import type { User } from "./api/request";
 
@@ -25,11 +26,14 @@ const AuthForm = () => {
         password
       }).unwrap();
 
-      console.log("Success:", res);
-      msg("success", "Welcome to the digital fortress!");
+      msg("success", `Welcome to the ${res?.username} Admin panel`);
       
+     if(res){
+      setLocalStorage("auth", "true");
+      setLocalStorage("user", JSON.stringify(res?.username));
       form.resetFields();
       navigate("/");  
+     }
 
     } catch (error: any) {
       console.error("Login error:", error);
