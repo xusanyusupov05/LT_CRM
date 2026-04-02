@@ -1,46 +1,41 @@
 import { Button, Flex, Form, Input, Typography } from "antd";
 import { UserOutlined, LockOutlined, SafetyOutlined, GlobalOutlined } from "@ant-design/icons";
-import {useNavigate} from "react-router-dom";
-import { users, type User } from "./users";
+import { useNavigate } from "react-router-dom";
 import { msg } from "../../shared/ui/msg";
-import { getLocalStorage, setLocalStorage } from "../../shared/lib/helpers/storage";
-import { useEffect, useState } from "react";
- 
+import { useUserLoginCreateMutation } from "./api/request";
+import type { User } from "./api/request";
+
 const AuthForm = () => {
-  const admin_password = import.meta.env.VITE_ADMIN_PASSWORD 
+  const [userLoginCreate, { isLoading }] = useUserLoginCreateMutation();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  
-  
-  const handleUserCheck = ( val:User ) => {
-    const fname = val.fname?.trim();
+
+  const handleUserCheck = async (val: User) => {
+    const username = val.username?.trim();
     const password = val.password?.trim();
     const confirm_password = val.confirm_password?.trim();
-    if (!fname || !password || !confirm_password) {
-      msg("error", "Please fill in all fields");
-      return;
-    }
-    
+
     if (password !== confirm_password) {
       msg("warning", "Passwords do not match");
       return;
     }
- 
-    if (users.some((user) => user.fname === fname && user.password === password && user.confirm_password === password)) {
-      msg("success", `Welcome to  ${ password && confirm_password === admin_password ? `${fname} admin panel` : fname}! `);
-      setLocalStorage("auth", JSON.stringify(true));
-      setTimeout(() => {
-        navigate("/");
-      }, 2300);
-    }else {
-      msg("error", "If you want to register on the site, contact @yxusan via telegram.");
+    try {
+      const res = await userLoginCreate({
+        username,
+        password
+      }).unwrap();
+
+      console.log("Success:", res);
+      msg("success", "Welcome to the digital fortress!");
+      
       form.resetFields();
-      return;
+      navigate("/");  
+
+    } catch (error: any) {
+      console.error("Login error:", error);
+      msg("error", error?.data?.message || "Login failed. Please try again.");
     }
-
-    form.resetFields();
-  }
-
+  };
    
 
 
@@ -61,7 +56,7 @@ const AuthForm = () => {
 
             <Flex vertical>
             <Typography.Text className="font-bold mainFont text-xs"> Full name </Typography.Text>
-            <Form.Item name={"fname"}>
+            <Form.Item name={"username"}>
               <Input autoComplete="off" prefix={<UserOutlined />} placeholder="Jane Doe " />
             </Form.Item>
             </Flex>
@@ -84,7 +79,7 @@ const AuthForm = () => {
             </Flex>
 
             <Form.Item>
-              <Button htmlType="submit" type="primary" className="w-full">
+              <Button loading={isLoading} htmlType="submit" type="primary" className="w-full">
                 Submit
               </Button>
             </Form.Item>

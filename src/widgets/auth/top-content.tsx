@@ -12,7 +12,7 @@ const TopContent = () => {
         <Text className="secondaryFont font-bold text-[18px]">Admin Portal</Text>
       </Flex>
         {/* <Link to="">Documentation</Link> */}
-        <a href="#" className="mainFont text-xs hover:underline">Documentation</a>
+        <a href="https://binarybridge-bb234.tilda.ws" target="_blank" className="mainFont text-xs hover:underline">Documentation</a>
     </Flex>
   );
 };

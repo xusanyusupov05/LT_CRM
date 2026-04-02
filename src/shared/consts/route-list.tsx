@@ -1,10 +1,8 @@
 // src/shared/consts/route-list.tsx
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import { HomeOutlined } from "@ant-design/icons";
 import type { ReactNode } from "react";
 import MainPage from "../../pages/main";
-import MainUserTable from "../../pages/users";
 import ROUTE_PATH from "./route-path";
-import DetailPage from "../../pages/detail-page/index";
 
 export interface Child {
   key?: string;
@@ -28,12 +26,6 @@ export const routesListForSidebar: Menu[] = [
     icon: <HomeOutlined />,
     element: <MainPage />,
   },
-  {
-    key: ROUTE_PATH.ADD_USER,
-    label: "Users",
-    icon: <UserOutlined />,
-    element: <MainUserTable />,
-  },
 ];
 
 export const routesListForRouter = [
@@ -46,8 +38,8 @@ export const routesListForRouter = [
         : { path: child.key, element: child.element }
     ),
   })),
-  {
-    path: "users/:id",
-    element: <DetailPage />,
-  },
+  // {
+  //   path: "users/:id",
+  //   element: <DetailPage />,
+  // },
 ];

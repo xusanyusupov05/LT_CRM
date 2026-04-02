@@ -23,22 +23,22 @@ const TopContent = ({ collapsed, setCollapsed }: TopContentProps) => {
           :
           (
             <Flex vertical gap={3} className='mt-20'>
-              <Typography.Text className="secondaryFont font-bold text-[var(--saturated-success)] text-lg leading-tight">
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
               B
               </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--saturated-success)] text-lg leading-tight">
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
               B
               </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--saturated-success)] text-lg leading-tight">
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
               -
               </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--saturated-success)] text-lg leading-tight">
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
               2
               </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--saturated-success)] text-lg leading-tight">
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
               3
               </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--saturated-success)] text-lg leading-tight">
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
               4
               </Typography.Text>
             </Flex>

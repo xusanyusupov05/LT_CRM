@@ -1,16 +1,20 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const baseApi = createApi({
-  reducerPath: 'api',
+export const authBaseApi = createApi({
+  reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_SUPABASE_URL,
+    baseUrl: "http://localhost:5000",
     prepareHeaders: (headers) => {
-      headers.set('apiKey',import.meta.env.VITE_SUPABASE_ANON_KEY)
-      headers.set('Authorization',`Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`)
-      headers.set('Content-Type','application/json')
-      return headers
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+
+      headers.set("Content-Type", "application/json");
+      return headers;
     },
   }),
-  tagTypes: ['users'],
-  endpoints: () => ({})
-})
+  tagTypes: ["Auth"],
+  endpoints: () => ({}),
+});
