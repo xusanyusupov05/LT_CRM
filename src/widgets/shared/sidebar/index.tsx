@@ -20,6 +20,8 @@ export const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
 
 
   return (
+    <>
+    
     <Sider
       trigger={null}
       collapsed={collapsed}
@@ -44,5 +46,6 @@ export const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
         <BottomContent collapsed={collapsed} />
       </Flex>
     </Sider>
+    </>
   );
 };

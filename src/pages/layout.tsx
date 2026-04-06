@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { Layout } from "antd";
 import React from "react";
 import { Outlet} from "react-router-dom";
@@ -11,7 +10,7 @@ const MainLayout: React.FC = () => {
   
   return (
     <Layout className="h-screen">
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       <Layout>
         <Content 
           className={`h-screen transition-all duration-200 overflow-auto ${

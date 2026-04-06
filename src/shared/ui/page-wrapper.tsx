@@ -15,7 +15,7 @@ const PageWrapper = ({ children, backBtn, icon, returnBtnText }: WrapProps) => {
         <Flex justify="flex-start">
           <Button
             onClick={() => navigate(-1)}
-            className="bg-transparent border-0 hover:!bg-transparent hover:!border-0 mainFont"
+            className="bg-transparent !px-0 text-xs text-[var(--primary)] border-0 hover:!bg-transparent hover:!border-0 mainFont hover:!text-[var(--primary)]"
             icon={icon}
           >
             {returnBtnText}

@@ -1,5 +1,6 @@
 import { Button, Flex, Typography } from 'antd'
 import { MenuFoldOutlined, MenuOutlined } from '@ant-design/icons'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface TopContentProps {
   collapsed: boolean;
@@ -14,36 +15,41 @@ const TopContent = ({ collapsed, setCollapsed }: TopContentProps) => {
         gap={10}
         className={`relative p-4 transition-all duration-200 h-20`}
       >
-        {
-          !collapsed ? (
-            <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              Binary Bridge
-            </Typography.Text>
+        <AnimatePresence mode="wait">
+          {!collapsed ? (
+            <motion.div
+              key="expanded"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-center"
+            >
+              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight text-nowrap">
+                Binary Bridge
+              </Typography.Text>
+            </motion.div>
           ) 
           :
           (
-            <Flex vertical gap={3} className='mt-20'>
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              B
-              </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              B
-              </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              -
-              </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              2
-              </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              3
-              </Typography.Text>
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight">
-              4
-              </Typography.Text>
-            </Flex>
-          )
-        }
+            <motion.div
+              key="collapsed"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Flex vertical gap={3} className='mt-20'>
+                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>B</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>B</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>-</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>2</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>3</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>4</Typography.Text>
+              </Flex>
+            </motion.div>
+          )}
+        </AnimatePresence>
         <Button
           type="text"
           icon={collapsed ? <MenuOutlined /> : <MenuFoldOutlined style={{fontSize: '18px'}}/>}

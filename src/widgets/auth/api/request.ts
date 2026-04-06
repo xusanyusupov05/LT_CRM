@@ -15,7 +15,7 @@ export interface ResUser{
 }
 
 type UserLoginCreate = Omit<User, "confirm_password">;
-type ResSingleUser = Omit<ResUser, "token" | "message">;
+type ResSingleUser = Omit<ResUser, "message">;
 
 export const authApi = authBaseApi.injectEndpoints({
   endpoints: (builder) => ({

@@ -1,11 +1,14 @@
+import PageWrapper from "../../shared/ui/page-wrapper"
+import Users from "../../widgets/users"
 
-const MainUserTable = () => {
+const MainUsers = () => {
   
     
   return (
     <>
+    <Users/>
     </>
   )
 }
 
-export default MainUserTable
+export default MainUsers

@@ -9,6 +9,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
           fontFamily: "Inter, system-ui, sans-serif",
         },
         components: {
+          Table:{
+            headerColor: "#1677FF",
+          },
           Menu: {
             iconSize: 20,
           },
