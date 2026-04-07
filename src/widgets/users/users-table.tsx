@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Table, Modal, Form, Input, Select, Flex } from 'antd';
+import { Button, Table, Modal, Flex } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
 import { useGetUsersQuery } from '../../shared/api/requests';
 import { UserAddOutlined } from '@ant-design/icons';
@@ -25,7 +25,7 @@ const UsersTable = () => {
 
   const [open, setOpen] = useState(false);
 
-  const [form] = Form.useForm();
+  // const [form] = Form.useForm();
 
   const item = data?.map((el) => ({
     key: el.id,
