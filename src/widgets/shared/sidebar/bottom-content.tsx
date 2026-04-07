@@ -14,10 +14,10 @@ const BottomContent = ({ collapsed }: BottomContentProps) => {
         className="p-6 border-t cursor-pointer"
       >
         <Flex align="center" gap={10}>
-          <UserOutlined className="text-xl text-[var(--primary)] " />
+          <UserOutlined className="text-xl text-[var(--main-color)] " />
           {!collapsed && (
             <Flex vertical>
-              <Typography.Text className="mainFont text-[var(--primary)] text-nowrap">
+              <Typography.Text className="mainFont text-[var(--main-color)] text-nowrap">
                 {data?.username.toUpperCase()}
               </Typography.Text>
               <Typography.Text className="mainFont  text-[var(--success)] text-xs text-nowrap">
@@ -27,7 +27,7 @@ const BottomContent = ({ collapsed }: BottomContentProps) => {
           )}
         </Flex>
         {!collapsed && data?.role === 'admin' && (
-          <SettingOutlined className="text-xl text-[var(--primary)]" />
+          <SettingOutlined className="text-xl text-[var(--main-color)]" />
         )}
       </Flex>
     </>

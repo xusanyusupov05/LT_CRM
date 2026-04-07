@@ -19,10 +19,12 @@ body{
     --primary: #1677FF;
     --success: #00ff00;
     --danger: #ff0000;
+    --main-color:#3525CD;
     --saturated-success: #07633F;
     --color-pink: #ee1feec4;
     --color-blue: #014ebb;
     --color-black: #000;
+    --main-bg-color: #3625cd15;
 }
 
 .mainFont{

@@ -25,7 +25,7 @@ const TopContent = ({ collapsed, setCollapsed }: TopContentProps) => {
               transition={{ duration: 0.2 }}
               className="flex items-center"
             >
-              <Typography.Text className="secondaryFont font-bold text-[var(--primary)] text-lg leading-tight text-nowrap">
+              <Typography.Text className="secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight text-nowrap">
                 Binary Bridge
               </Typography.Text>
             </motion.div>
@@ -40,12 +40,12 @@ const TopContent = ({ collapsed, setCollapsed }: TopContentProps) => {
               transition={{ duration: 0.2 }}
             >
               <Flex vertical gap={3} className='mt-20'>
-                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>B</Typography.Text>
-                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>B</Typography.Text>
-                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>-</Typography.Text>
-                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>2</Typography.Text>
-                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>3</Typography.Text>
-                <Typography.Text className='secondaryFont font-bold text-[var(--primary)] text-lg leading-tight'>4</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight'>B</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight'>B</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight'>-</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight'>2</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight'>3</Typography.Text>
+                <Typography.Text className='secondaryFont font-bold text-[var(--main-color)] text-lg leading-tight'>4</Typography.Text>
               </Flex>
             </motion.div>
           )}
@@ -54,7 +54,7 @@ const TopContent = ({ collapsed, setCollapsed }: TopContentProps) => {
           type="text"
           icon={collapsed ? <MenuOutlined /> : <MenuFoldOutlined style={{fontSize: '18px'}}/>}
           onClick={() => setCollapsed(!collapsed)}
-          style={{color: 'var(--primary)'}}
+          style={{color: 'var(--main-color)'}}
           className={`absolute w-full ${
             collapsed 
               ? "-bottom-32 left-1/2 -translate-x-1/2" 

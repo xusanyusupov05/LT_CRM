@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
+import './styles/ant_d.css'
 import ProviderMain from './providers'
 import { Analytics } from "@vercel/analytics/react"
 

@@ -10,13 +10,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
         },
         components: {
           Table:{
-            headerColor: "#1677FF",
+            headerBg: "var(--main-bg-color)",
+            headerColor: "var(--main-color)",
           },
           Menu: {
             iconSize: 20,
           },
           Input: {
-            paddingBlock: 5,    
+            paddingBlock: 5, 
+            hoverBorderColor: "var(--main-color)",
+            activeBorderColor: "var(--main-color)",
+          },
+          Select: {
+            hoverBorderColor: "var(--main-color)",
+            activeBorderColor: "var(--main-color)",
+            optionActiveBg: "var(--main-bg-color)",
+          },
+          DatePicker: {
+            hoverBorderColor: "var(--main-color)",
+            activeBorderColor: "var(--main-color)",
+            cellHoverBg: 'var(--main-bg-color)',
           },
           Button: {
             boxShadow: "none",

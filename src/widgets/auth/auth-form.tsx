@@ -82,7 +82,7 @@ const AuthForm = () => {
             </Flex>
 
             <Form.Item>
-              <Button loading={isLoading} htmlType="submit" type="primary" className="w-full">
+              <Button loading={isLoading} htmlType="submit"  className="w-full btn-success">
                 Submit
               </Button>
             </Form.Item>
