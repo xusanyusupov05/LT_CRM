@@ -1,6 +1,6 @@
-// src/shared/consts/route-list.tsx
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import type { ReactNode } from "react";
+
 import MainPage from "../../pages/main";
 import ROUTE_PATH from "./route-path";
 import MainUsers from "../../pages/users";
@@ -19,34 +19,34 @@ export interface Menu {
   children?: Child[];
 }
 
-// Sidebar uchun route'lar (faqat ko'rinadiganlar)
-export const routesListForSidebar: Menu[] = [
+const routes = [
   {
     key: ROUTE_PATH.MAIN,
-    label: "Main",
+    labelKey: 'main',
     icon: <HomeOutlined />,
     element: <MainPage />,
   },
   {
     key: ROUTE_PATH.USERS,
-    label: "Users",
+    labelKey: 'users',
     icon: <UserOutlined />,
     element: <MainUsers />,
   },
 ];
 
-export const routesListForRouter = [
-  ...routesListForSidebar.map((route: Menu) => ({
-    path: route.key,
-    element: route.element,
-    children: route.children?.map((child) =>
-      child.index
-        ? { index: true, element: child.element }
-        : { path: child.key, element: child.element }
-    ),
-  })),
-  // {
-  //   path: "users/:id",
-  //   element: <DetailPage />,
-  // },
-];
+export const getRoutesListForSidebar = (t: any): Menu[] => {
+  return routes.map(({ labelKey, ...route }) => ({
+    ...route,
+    label: t(labelKey),
+  }));
+};
+
+export const routesListForRouter = routes.map((route: any) => ({
+  path: route.key,
+  element: route.element,
+  children: route.children?.map((child: any) =>
+    child.index
+      ? { index: true, element: child.element }
+      : { path: child.key, element: child.element }
+  ),
+}));

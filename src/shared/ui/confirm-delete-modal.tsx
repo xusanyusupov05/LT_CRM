@@ -9,6 +9,7 @@ interface ConfirmDeleteModalProps {
   onCancel: () => void;
   onConfirm: () => void;
   setIsCorrect: (value: boolean) => void;
+  smallModal?: boolean;
 }
 
 const delete_code = [
@@ -35,6 +36,7 @@ const ConfirmDeleteModal = ({
   onCancel,
   onConfirm,
   setIsCorrect,
+  smallModal
 }: ConfirmDeleteModalProps) => {
   if (!open) return null;
   const [form] = Form.useForm();
@@ -42,6 +44,7 @@ const ConfirmDeleteModal = ({
     delete_code[Math.floor(Math.random() * delete_code.length)],
   );
   const onFinish = (values: any) => {
+   if (smallModal === false) {
     if (values.verification_code === generatedCode) {
       setIsCorrect(true);
       onConfirm();
@@ -50,6 +53,7 @@ const ConfirmDeleteModal = ({
       setIsCorrect(false);
       return;
     }
+   }
   };
 
   return (
@@ -59,7 +63,7 @@ const ConfirmDeleteModal = ({
           <WarningOutlined className="px-5 py-5 bg-red-500/40 rounded-full text-red-800" />
           <Typography.Title level={4}>Confirm Deletion</Typography.Title>
         </Flex>
-        <Typography.Text className="mainFont">
+           <Typography.Text className="mainFont">
           This action will permanently delete <b>{total}</b> total entries. To
           prevent accidental data loss, please type the security code below to
           proceed.

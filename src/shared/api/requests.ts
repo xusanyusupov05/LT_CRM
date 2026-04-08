@@ -4,27 +4,24 @@ import { METHODS } from "./method";
 /* === MODEL === */
 export interface Users {
     id: number;
-    f_name: string; //
-    l_name: string;//
+    name: string; //
+    surname: string;//
     phone_number: string;//
-    email: string;//
-    region:string//
-    street:string;//
-    house_number:string;//
-    date: string; //
-    gender: string; //
-    merried:string, // 
-    passport_series: string; //
-    passport_number: string; //
-    place_Issue:string;//
-    school: string;//
-    school_num: string;//
-    education: string;//
-    graduation_year: string;//
-    graduation_year_school: string;//
-    parents_name: string;//
-    created_at: string;//
-    childs: string;//
+    birth_date: string;//
+    gender:string,//
+    merried:string,//
+    is_married:string,//
+    passport_seria:string,//
+    passport_number:string,//
+    passport_issued_place:string,//
+    region:string,//
+    city:string,//
+    street:string,//
+    house_number:string,//
+    school_name:string,//
+    school_number:string,//
+    higher_education_name:string,//
+    name_workplace:string,//
 }
 
 type CreateUser = Omit<Users, "id">;
